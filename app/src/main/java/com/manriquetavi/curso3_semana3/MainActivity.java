@@ -10,8 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.content.Intent;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 
@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listaMascotas = (RecyclerView)findViewById(R.id.rvMascota);
-        Toolbar action_bar = (Toolbar) findViewById(R.id.action_bar);
+        listaMascotas = findViewById(R.id.rvMascota);
+        Toolbar action_bar = findViewById(R.id.action_bar);
         setSupportActionBar(action_bar);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -49,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
         } else if(id == R.id.Opcion2){
             Toast.makeText(this,"OPCION2",Toast.LENGTH_LONG).show();
         } else if(id == R.id.Star){
-            Toast.makeText(this, "STAR", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(this, MascotaFavorita.class);
+            startActivity(i);
+            //Toast.makeText(this, "STAR", Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void inicializarListaContatos(){
-        mascotas = new ArrayList<Mascota>();
+        mascotas = new ArrayList<>();
         mascotas.add(new Mascota("Turtle",0, R.drawable.turtle));
         mascotas.add(new Mascota("Panda", 1, R.drawable.panda));
         mascotas.add(new Mascota("Husky", 2, R.drawable.husky));
