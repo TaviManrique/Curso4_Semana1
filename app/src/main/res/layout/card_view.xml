@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="300dp"
+android:layout_height="330dp"
+android:layout_marginStart="55dp"
+android:id="@+id/cvMascota"
+app:cardCornerRadius="8dp"
+android:layout_marginTop="20dp"
+android:layout_marginBottom="80dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/cvImagePet"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/turtle"
+        android:contentDescription="Mascota">
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/cvImageBone"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/bone"
+            android:contentDescription="@string/cdBoneImage1" />
+        <TextView
+            android:id="@+id/cvTextName"
+            android:layout_width="210dp"
+            android:layout_height="30dp"
+            android:text="Tortuga"
+            android:textAlignment="textStart"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/cvFavorito"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:textAlignment="textEnd"
+            android:text="1"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/cvImageBoneYellow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/bone_yellow"
+            android:contentDescription="@string/cdBoneImage2" />
+    </LinearLayout>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
