@@ -39,7 +39,6 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
             @Override
             public void onClick(View v) {
                 Toast.makeText(activity, mascota.getNombre(), Toast.LENGTH_LONG).show();
-                //activity.finish();
             }
         });
         holder.cvImageBone.setOnClickListener(new View.OnClickListener() {
@@ -47,9 +46,6 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
             public void onClick(View v) {
                 posiciones.add(position);
                 holder.cvFavorito.setText(String.valueOf(mascota.addOneFavorito()));
-                Toast.makeText(activity, String.valueOf(mascota.getFavorito()) + ",la posicion es: " +
-                        String.valueOf(posiciones.get(posiciones.size()-1)), Toast.LENGTH_LONG).show();
-                //activity.finish();
             }
         });
     }

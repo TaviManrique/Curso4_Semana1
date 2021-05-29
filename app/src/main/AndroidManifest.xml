@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Curso3_Semana3" >
-        <activity android:name=".MascotaFavorita" >
+        <activity android:name=".MascotaFavorita"
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".MainActivity" >
             <intent-filter>

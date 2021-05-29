@@ -21,7 +21,7 @@ public class MascotaFavorita extends AppCompatActivity {
         listaMascotasFavoritas = findViewById(R.id.rvMascotaFavorita);
         Toolbar action_bar = findViewById(R.id.action_bar_mf);
         setSupportActionBar(action_bar);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent i = getIntent();
         int posicion1 = i.getIntExtra("posicion1",0);
@@ -41,6 +41,12 @@ public class MascotaFavorita extends AppCompatActivity {
         listaMascotasFavoritas.setAdapter(adaptador);
     }
 
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        finish();
+        return false;
+    }
+
     public void inicializarListaMascotasFavoritas(int p1, int p2, int p3, int p4, int p5){
         mascotasFavoritas = new ArrayList<>();
         mascotasFavoritas.add(MainActivity.mascotas.get(p1));
@@ -48,9 +54,5 @@ public class MascotaFavorita extends AppCompatActivity {
         mascotasFavoritas.add(MainActivity.mascotas.get(p3));
         mascotasFavoritas.add(MainActivity.mascotas.get(p4));
         mascotasFavoritas.add(MainActivity.mascotas.get(p5));
-        //mascotasFavoritas.add(new Mascota("Panda", 0, R.drawable.panda));
-        //mascotasFavoritas.add(new Mascota("Husky", 0, R.drawable.husky));
-        //mascotasFavoritas.add(new Mascota("Pug",0, R.drawable.pug));
-        //mascotasFavoritas.add(new Mascota("Parrot",0, R.drawable.parrot));
     }
 }
