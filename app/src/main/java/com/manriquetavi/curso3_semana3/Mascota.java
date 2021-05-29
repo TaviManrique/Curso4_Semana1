@@ -27,6 +27,11 @@ public class Mascota {
         this.favorito = favorito;
     }
 
+    public int addOneFavorito() {
+        favorito = favorito + 1;
+        return favorito;
+    }
+
     public int getFoto() {
         return foto;
     }

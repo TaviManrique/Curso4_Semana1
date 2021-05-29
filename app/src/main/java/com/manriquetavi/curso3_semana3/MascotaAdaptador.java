@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -17,6 +16,9 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
 
     ArrayList<Mascota> mascotas;
     Activity activity;
+    static ArrayList<Integer> posiciones = new ArrayList<>();
+
+
     public MascotaAdaptador(ArrayList<Mascota> mascotas, Activity activity){
         this.mascotas = mascotas;
         this.activity = activity;
@@ -40,6 +42,16 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
                 //activity.finish();
             }
         });
+        holder.cvImageBone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                posiciones.add(position);
+                holder.cvFavorito.setText(String.valueOf(mascota.addOneFavorito()));
+                Toast.makeText(activity, String.valueOf(mascota.getFavorito()) + ",la posicion es: " +
+                        String.valueOf(posiciones.get(posiciones.size()-1)), Toast.LENGTH_LONG).show();
+                //activity.finish();
+            }
+        });
     }
 
     public int getItemCount() { //Cantidad de elementos que contiene mi lista
@@ -50,9 +62,11 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
         private ImageView cvImagePet;
         private TextView cvFavorito;
         private TextView cvTextName;
+        private ImageView cvImageBone;
 
         public MascotaViewHolder(View itemView) {
             super(itemView);
+            cvImageBone = (ImageView) itemView.findViewById(R.id.cvImageBone);
             cvImagePet = (ImageView) itemView.findViewById(R.id.cvImagePet);
             cvFavorito = (TextView) itemView.findViewById(R.id.cvFavorito);
             cvTextName = (TextView) itemView.findViewById(R.id.cvTextName);
