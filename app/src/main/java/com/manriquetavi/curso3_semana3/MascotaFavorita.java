@@ -18,7 +18,7 @@ public class MascotaFavorita extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favorita_mascota);
-        listaMascotasFavoritas = findViewById(R.id.rvMascotaFavorita);
+        listaMascotasFavoritas = findViewById(R.id.rvMascotaFavoritas);
         Toolbar action_bar = findViewById(R.id.action_bar_mf);
         setSupportActionBar(action_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -49,10 +49,10 @@ public class MascotaFavorita extends AppCompatActivity {
 
     public void inicializarListaMascotasFavoritas(int p1, int p2, int p3, int p4, int p5){
         mascotasFavoritas = new ArrayList<>();
-        mascotasFavoritas.add(MainActivity.mascotas.get(p1));
-        mascotasFavoritas.add(MainActivity.mascotas.get(p2));
-        mascotasFavoritas.add(MainActivity.mascotas.get(p3));
-        mascotasFavoritas.add(MainActivity.mascotas.get(p4));
-        mascotasFavoritas.add(MainActivity.mascotas.get(p5));
+        mascotasFavoritas.add(RecyclerViewFragment.mascotas.get(p1));
+        mascotasFavoritas.add(RecyclerViewFragment.mascotas.get(p2));
+        mascotasFavoritas.add(RecyclerViewFragment.mascotas.get(p3));
+        mascotasFavoritas.add(RecyclerViewFragment.mascotas.get(p4));
+        mascotasFavoritas.add(RecyclerViewFragment.mascotas.get(p5));
     }
 }

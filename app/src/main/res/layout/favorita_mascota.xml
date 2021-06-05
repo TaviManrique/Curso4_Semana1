@@ -9,12 +9,10 @@
 
   <include
       android:id="@+id/action_bar_mf"
-      layout="@layout/action_bar"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
+      layout="@layout/action_bar" />
 
   <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/rvMascotaFavorita"
+      android:id="@+id/rvMascotaFavoritas"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       app:layout_constraintTop_toBottomOf="@+id/action_bar_mf">
