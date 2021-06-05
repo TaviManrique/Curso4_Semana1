@@ -1,4 +1,5 @@
-# Curso3_Semana3
+# Curso3_Tarea3_Tarea4
+
 
 Actividad de la semana 3 del curso Desarrollo de aplicaciones con Android
 En el primer activity se muestra 5 mascotas, de las cuales tienes que darle rating presionando el hueso blanco.
