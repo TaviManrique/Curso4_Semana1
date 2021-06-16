@@ -111,7 +111,7 @@ public class BaseDatos extends SQLiteOpenHelper {
     public ArrayList<Integer> obtenerIdsMascotasFavoritas(Context context) {
         ArrayList<Integer> Ids = new ArrayList<>();
         String query = "SELECT * FROM " + ConstantesBaseDatos.TABLE_FAVORITAS_MASCOTAS +
-                " ORDER BY " + ConstantesBaseDatos.TABLE_FAVORITAS_MASCOTAS_ID_MASCOTA + " DESC LIMIT 5";
+                " ORDER BY " + ConstantesBaseDatos.TABLE_FAVORITAS_MASCOTAS_ID + " DESC LIMIT 5";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         while (cursor.moveToNext()) {
