@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,20 +23,17 @@ public class MascotaFavorita extends AppCompatActivity {
         Toolbar action_bar = findViewById(R.id.action_bar_mf);
         setSupportActionBar(action_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        Intent i = getIntent();
-        int posicion1 = i.getIntExtra("posicion1",0);
-        int posicion2 = i.getIntExtra("posicion2",0);
-        int posicion3 = i.getIntExtra("posicion3",0);
-        int posicion4 = i.getIntExtra("posicion4",0);
-        int posicion5 = i.getIntExtra("posicion5",0);
+        ArrayList<Integer> Ids = new ArrayList<>();
+        Intent intent = getIntent();
+        Ids = intent.getIntegerArrayListExtra("Ids");
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         listaMascotasFavoritas.setLayoutManager(llm);
-        inicializarListaMascotasFavoritas(posicion1, posicion2, posicion3, posicion4, posicion5);
+        inicializarListaMascotasFavoritas(Ids);
         inicializarAdaptadorMF();
     }
+
     public void inicializarAdaptadorMF(){
         MascotaFavoritaAdaptador adaptador = new MascotaFavoritaAdaptador(mascotasFavoritas, this);
         listaMascotasFavoritas.setAdapter(adaptador);
@@ -47,12 +45,14 @@ public class MascotaFavorita extends AppCompatActivity {
         return false;
     }
 
-    public void inicializarListaMascotasFavoritas(int p1, int p2, int p3, int p4, int p5){
+    public void inicializarListaMascotasFavoritas(ArrayList<Integer> Ids){
         mascotasFavoritas = new ArrayList<>();
-        mascotasFavoritas.add(RecyclerViewFragment.mascotas.get(p1));
-        mascotasFavoritas.add(RecyclerViewFragment.mascotas.get(p2));
-        mascotasFavoritas.add(RecyclerViewFragment.mascotas.get(p3));
-        mascotasFavoritas.add(RecyclerViewFragment.mascotas.get(p4));
-        mascotasFavoritas.add(RecyclerViewFragment.mascotas.get(p5));
+        ConstructorMascotas constructorMascotas = new ConstructorMascotas(this);
+        for (int i : Ids){
+            Mascota mascotaActual = new Mascota();
+            mascotaActual = RecyclerViewFragmentPresenter.mascotas.get(i-1);
+            mascotaActual.setFavorito(constructorMascotas.obtenerFavoritoMascota(mascotaActual));
+            mascotasFavoritas.add(mascotaActual);
+        }
     }
 }

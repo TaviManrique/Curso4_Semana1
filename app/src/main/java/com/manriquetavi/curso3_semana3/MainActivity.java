@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,12 +39,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         setUpViewPager();
-
-        /*LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        listaMascotas.setLayoutManager(llm);
-        inicializarListaMascotas();
-        inicializarAdaptador();*/
     }
 
     @Override
@@ -75,24 +72,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void mascotaFavoritaActivity() {
-        ArrayList<Integer> posiciones = MascotaAdaptador.posiciones;
-        int posicion1, posicion2, posicion3, posicion4, posicion5, filtro;
-        filtro = posiciones.size();
+        int filtro = 0;
+        ConstructorMascotas constructorMascotas = new ConstructorMascotas(this);
+        filtro = constructorMascotas.obtenerFavoritoTotales();
+
         if (filtro < 5){
             Toast.makeText(this,"Debe darle al menos 5 raiting a las mascotas",Toast.LENGTH_LONG).show();
         }
         else {
-            posicion5 = posiciones.get(posiciones.size() - 1);
-            posicion4 = posiciones.get(posiciones.size() - 2);
-            posicion3 = posiciones.get(posiciones.size() - 3);
-            posicion2 = posiciones.get(posiciones.size() - 4);
-            posicion1 = posiciones.get(posiciones.size() - 5);
+            ArrayList<Integer> Ids = new ArrayList<>();
+            Ids = constructorMascotas.obtenerIdsMascotasFavoritas();
             Intent i = new Intent(this, MascotaFavorita.class);
-            i.putExtra("posicion1",posicion1);
-            i.putExtra("posicion2",posicion2);
-            i.putExtra("posicion3",posicion3);
-            i.putExtra("posicion4",posicion4);
-            i.putExtra("posicion5",posicion5);
+            i.putIntegerArrayListExtra("Ids",Ids);
             startActivity(i);
         }
     }
@@ -110,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.fragment_home);
         tabLayout.getTabAt(1).setIcon(R.drawable.fragment_perfil);
-
     }
+
 
 }

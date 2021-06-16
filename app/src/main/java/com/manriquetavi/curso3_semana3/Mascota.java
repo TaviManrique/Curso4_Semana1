@@ -1,6 +1,7 @@
 package com.manriquetavi.curso3_semana3;
 
 public class Mascota {
+    private int id;
     private String nombre;
     private int favorito;
     private int foto;
@@ -10,6 +11,8 @@ public class Mascota {
         this.favorito = favorito;
         this.foto = foto;
     }
+
+    public Mascota() { }
 
     public String getNombre() {
         return nombre;
@@ -38,5 +41,13 @@ public class Mascota {
 
     public void setFoto(int foto) {
         this.foto = foto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

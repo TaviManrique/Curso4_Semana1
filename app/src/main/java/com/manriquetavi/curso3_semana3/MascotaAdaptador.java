@@ -16,8 +16,6 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
 
     ArrayList<Mascota> mascotas;
     Activity activity;
-    static ArrayList<Integer> posiciones = new ArrayList<>();
-
 
     public MascotaAdaptador(ArrayList<Mascota> mascotas, Activity activity){
         this.mascotas = mascotas;
@@ -44,8 +42,14 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
         holder.cvImageBone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                posiciones.add(position);
-                holder.cvFavorito.setText(String.valueOf(mascota.addOneFavorito()));
+                Toast.makeText(activity, "Diste favorito a " + mascota.getNombre(),
+                        Toast.LENGTH_SHORT).show();
+                ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
+                constructorMascotas.darFavoritoMascota(mascota);
+                holder.cvFavorito.setText(String.valueOf(constructorMascotas.obtenerFavoritoMascota(mascota)));
+                //Toast.makeText(activity, "Favoritos totales son: " +
+                // String.valueOf(constructorMascotas.obtenerFavoritoTotales(mascota)),Toast.LENGTH_LONG).show();
+                //holder.cvFavorito.setText(String.valueOf(mascota.addOneFavorito()));
             }
         });
     }

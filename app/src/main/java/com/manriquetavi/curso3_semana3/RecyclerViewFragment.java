@@ -11,27 +11,39 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RecyclerViewFragment extends Fragment {
+public class RecyclerViewFragment extends Fragment implements IRecyclerViewFragment {
 
-    static ArrayList<Mascota> mascotas;
     private RecyclerView rvMascotas;
+    private IRecyclerViewFragmentPresenter presenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //return super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_recyclerview, container, false);
         rvMascotas = (RecyclerView) v.findViewById(R.id.rvMascotas);
-
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        //GridLayoutManager glm = GridLayoutManager(this,2);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        rvMascotas.setLayoutManager(llm);
-        inicializarListaMascotas();
-        inicializarAdaptador();
+        presenter = new RecyclerViewFragmentPresenter(this, getContext());
         return v;
     }
 
+    @Override
+    public void generarLinearLayoutVertical() {
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        //GridLayoutManager glm = GridLayoutManager(this,2);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rvMascotas.setLayoutManager(llm);
+    }
+
+    @Override
+    public MascotaAdaptador crearAdaptador(ArrayList<Mascota> mascotas) {
+        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, getActivity());
+        return adaptador;
+    }
+
+    @Override
+    public void inicializarAdaptadorRV(MascotaAdaptador adaptador) {
+        rvMascotas.setAdapter(adaptador);
+    }
+    /*
     public void inicializarAdaptador(){
         MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, getActivity());
         rvMascotas.setAdapter(adaptador);
@@ -45,4 +57,8 @@ public class RecyclerViewFragment extends Fragment {
         mascotas.add(new Mascota("Pug",3, R.drawable.pug));
         mascotas.add(new Mascota("Parrot",4, R.drawable.parrot));
     }
+
+     */
+
+
 }
