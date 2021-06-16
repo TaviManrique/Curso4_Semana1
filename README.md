@@ -1,4 +1,4 @@
-# Curso3_Tarea3_Tarea4
+# Curso3_Tarea3_Tarea4_Tarea5
 
 
 Actividad de la semana 3 del curso Desarrollo de aplicaciones con Android
@@ -18,3 +18,7 @@ Correo, este sera el correo destinatario
 Descripcion, sera el contenido del correo
 Se enviara un correo llenando todos esos datos, y el remitente sera el correo pruebadev61@gmail.com, el cual a sido creado solo para propositos de prueba.
 El activity Bio, mostrara algunos datos personales mios como mi nombre, correo y la foto de un gato cool.
+
+
+Actividad de la semana 5  del curso Desarrollo de aplicaciones con Android, sobreescrita en la tarea de la semana 4.
+Se genero la persistencia segun las indicaciones, se creo 2 tablas y en base a ello se hizo la presentacion de las mascotas en sus respectivas activitys.
