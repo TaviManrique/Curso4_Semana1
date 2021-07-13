@@ -28,7 +28,6 @@ public class RecyclerViewFragment extends Fragment implements IRecyclerViewFragm
     @Override
     public void generarLinearLayoutVertical() {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        //GridLayoutManager glm = GridLayoutManager(this,2);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rvMascotas.setLayoutManager(llm);
     }
@@ -43,22 +42,5 @@ public class RecyclerViewFragment extends Fragment implements IRecyclerViewFragm
     public void inicializarAdaptadorRV(MascotaAdaptador adaptador) {
         rvMascotas.setAdapter(adaptador);
     }
-    /*
-    public void inicializarAdaptador(){
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, getActivity());
-        rvMascotas.setAdapter(adaptador);
-    }
-
-    public void inicializarListaMascotas(){
-        mascotas = new ArrayList<>();
-        mascotas.add(new Mascota("Turtle",0, R.drawable.turtle));
-        mascotas.add(new Mascota("Panda", 1, R.drawable.panda));
-        mascotas.add(new Mascota("Husky", 2, R.drawable.husky));
-        mascotas.add(new Mascota("Pug",3, R.drawable.pug));
-        mascotas.add(new Mascota("Parrot",4, R.drawable.parrot));
-    }
-
-     */
-
 
 }

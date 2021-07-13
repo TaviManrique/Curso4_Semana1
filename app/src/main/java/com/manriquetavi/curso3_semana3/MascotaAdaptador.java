@@ -47,9 +47,6 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
                 ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
                 constructorMascotas.darFavoritoMascota(mascota);
                 holder.cvFavorito.setText(String.valueOf(constructorMascotas.obtenerFavoritoMascota(mascota)));
-                //Toast.makeText(activity, "Favoritos totales son: " +
-                // String.valueOf(constructorMascotas.obtenerFavoritoTotales(mascota)),Toast.LENGTH_LONG).show();
-                //holder.cvFavorito.setText(String.valueOf(mascota.addOneFavorito()));
             }
         });
     }

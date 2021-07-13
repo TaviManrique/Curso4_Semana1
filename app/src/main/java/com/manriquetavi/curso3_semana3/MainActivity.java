@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
             contactActivity();
         } else if(id == R.id.Opcion2){
             bioActivity();
+        } else if(id == R.id.Opcion3){
+            loginActivity();
         } else if(id == R.id.Star){
             mascotaFavoritaActivity();
         }
@@ -68,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void contactActivity() {
         Intent i = new Intent(this, ContactActivity.class);
+        startActivity(i);
+    }
+
+    private void loginActivity() {
+        Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
 
