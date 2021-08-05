@@ -9,15 +9,17 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class MascotaPerfilAdaptador extends RecyclerView.Adapter<MascotaPerfilAdaptador.MascotaPerfilViewHolder>{
-    ArrayList<Mascota> mascotas;
+    ArrayList<ProfileItem> profileItems;
     Activity activity;
 
 
-    public MascotaPerfilAdaptador(ArrayList<Mascota> mascotas, Activity activity){
-        this.mascotas = mascotas;
+    public MascotaPerfilAdaptador(ArrayList<ProfileItem> profileItems, Activity activity){
+        this.profileItems = profileItems;
         this.activity = activity;
     }
 
@@ -28,13 +30,17 @@ public class MascotaPerfilAdaptador extends RecyclerView.Adapter<MascotaPerfilAd
 
     @Override
     public void onBindViewHolder(MascotaPerfilAdaptador.MascotaPerfilViewHolder holder, int position) {
-        final Mascota mascota = mascotas.get(position);
-        holder.cvsImagePet.setImageResource(mascota.getFoto());
-        holder.cvsFavorito.setText(String.valueOf(mascota.getFavorito()));
+        final ProfileItem profileItem = profileItems.get(position);
+        holder.cvsFavorito.setText(String.valueOf(profileItem.getLikes()));
+        holder.cvsImageBoneYellow.setImageResource(R.drawable.bone_yellow);
+        Picasso.with(activity).
+                load(profileItem.getUrlPetPic()).
+                placeholder(R.drawable.cat).
+                into(holder.cvsImagePet);
     }
 
     public int getItemCount() { //Cantidad de elementos que contiene mi lista
-        return mascotas.size();
+        return profileItems.size();
     }
 
     public static class MascotaPerfilViewHolder extends RecyclerView.ViewHolder{

@@ -18,4 +18,10 @@ public class RestApiAdapter {
         gsonBuilder.registerTypeAdapter(BioResponse.class, new BioDeserializador());
         return gsonBuilder.create();
     }
+
+    public Gson buildGsonDeserializeMediaRecent() {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(MascotaResponse.class, new MascotaDeserializador());
+        return gsonBuilder.create();
+    }
 }

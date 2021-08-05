@@ -39,21 +39,25 @@ public class PerfilFragment extends Fragment implements IPerfilFragment{
         tvFollowers = v.findViewById(R.id.tvFollowers);
         tvFollows = v.findViewById(R.id.tvFollows);
         tvMediaCount = v.findViewById(R.id.tvMediaCount);
-
-        GridLayoutManager glm = new GridLayoutManager(getActivity(),3);
-        rvsMascotas.setLayoutManager(glm);
-        inicializarListaMascotas();
-        inicializarAdaptador();
         return v;
     }
 
-    public void inicializarAdaptador(){
-        MascotaPerfilAdaptador adaptador = new MascotaPerfilAdaptador(mascotas, getActivity());
-        rvsMascotas.setAdapter(adaptador);
+
+    @Override
+    public void generateGridLayout() {
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
+        rvsMascotas.setLayoutManager(gridLayoutManager);
     }
 
-    public void inicializarListaMascotas(){
-        mascotas = new ArrayList<>();
+    @Override
+    public MascotaPerfilAdaptador createAdaptador(ArrayList<ProfileItem> perfilItems) {
+        MascotaPerfilAdaptador mascotaPerfilAdaptador = new MascotaPerfilAdaptador(perfilItems, getActivity());
+        return mascotaPerfilAdaptador;
+    }
+
+    @Override
+    public void inicializarAdaptador(MascotaPerfilAdaptador perfilAdaptador) {
+        rvsMascotas.setAdapter(perfilAdaptador);
     }
 
     @Override
